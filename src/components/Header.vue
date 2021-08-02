@@ -1,7 +1,11 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button text="Add Task" color="green" />
+    <Button
+      @btn-click="$emit('show-form')"
+      v-bind:text="showAddTask ? 'Cancel' : 'Add Task'"
+      v-bind:color="showAddTask ? 'Red' : 'Green'"
+    />
   </header>
 </template>
 
@@ -12,6 +16,7 @@ export default {
   name: "Header",
   props: {
     title: String,
+    showAddTask: Boolean,
   },
   components: {
     Button,
